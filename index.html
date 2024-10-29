@@ -64,9 +64,159 @@
       margin-bottom: 30px;
       animation: fadeInUp 2s ease-in-out;
     }
+    .cake-container {
+      margin: 30px auto;
+    }
 
-    /* Cake and Balloon styles (remains the same) */
-    /* Add your cake, balloon, and other styles here */
+    .cake {
+      top: 60px;
+      width: 100px;
+      height: 80px;
+      background-color: #ff9966;
+      border-radius: 10px;
+      position: relative;
+      margin: 0 auto;
+    }
+
+    .candle {
+      width: 10px;
+      height: 50px;
+      background-color: yellow;
+      position: absolute;
+      top: -50px;
+      left: 45px;
+      border-radius: 5px;
+    }
+
+    .flame {
+      width: 10px;
+      height: 20px;
+      background-color: orange;
+      position: absolute;
+      top: -70px;
+      left: 45px;
+      border-radius: 50%;
+      animation: flicker 1s infinite;
+    }
+
+    @keyframes flicker {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.5;
+      }
+    }
+
+    /* Balloons */
+    .balloons {
+      position: relative;
+      height: 200px;
+      margin-top: 50px;
+      z-index: 10;
+    }
+
+    .balloon {
+      width: 50px;
+      height: 70px;
+      border-radius: 50%;
+      position: absolute;
+      bottom: 0;
+      animation: float 6s ease-in-out infinite, sideToSide 3s infinite;
+      transition: transform 0.3s ease;
+    }
+
+    .balloon1 {
+      background-color: #ff6666;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .balloon2 {
+      background-color: #ffcc66;
+      left: 30%;
+      animation-delay: 1s;
+    }
+
+    .balloon3 {
+      background-color: #66ff66;
+      left: 50%;
+      animation-delay: 0.5s;
+    }
+
+    .balloon4 {
+      background-color: #66ccff;
+      left: 70%;
+      animation-delay: 1.5s;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-200px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes sideToSide {
+      0% {
+        transform: translateX(0);
+      }
+      50% {
+        transform: translateX(20px);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    /* Interactivity */
+    .balloon:hover {
+      transform: scale(1.2);
+    }
+
+    /* Confetti */
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: #f0f;
+      box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.2);
+      animation: fall 10s linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100vh) rotate(0deg);
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+      }
+      
+    }
+   
+    /* Stars */
+    .star {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: yellow;
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+      animation: twinkle 1.5s infinite;
+    }
+
+    @keyframes twinkle {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.5;
+      }
+
     
   </style>
 </head>
@@ -94,7 +244,7 @@
     <div class="confetti"></div>
     <!-- Add star elements here -->
 
-    <button id="playAudio" style="margin-top: 20px; padding: 10px; font-size: 16px;">Play Audio</button>
+    <button id="playAudio" style="margin-top: 20px; padding: 10px; font-size: 16px; opacity: 30%;">Play Audio</button>
     <audio id="birthdayAudio" src="SelamatUlangTahun.mp3" loop></audio>
   </div>
 
