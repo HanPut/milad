@@ -64,6 +64,7 @@
       margin-bottom: 30px;
       animation: fadeInUp 2s ease-in-out;
     }
+
     .cake-container {
       margin: 30px auto;
     }
@@ -126,58 +127,25 @@
       transition: transform 0.3s ease;
     }
 
-    .balloon1 {
-      background-color: #ff6666;
-      left: 10%;
-      animation-delay: 0s;
-    }
-
-    .balloon2 {
-      background-color: #ffcc66;
-      left: 30%;
-      animation-delay: 1s;
-    }
-
-    .balloon3 {
-      background-color: #66ff66;
-      left: 50%;
-      animation-delay: 0.5s;
-    }
-
-    .balloon4 {
-      background-color: #66ccff;
-      left: 70%;
-      animation-delay: 1.5s;
-    }
+    .balloon1 { background-color: #ff6666; left: 10%; animation-delay: 0s; }
+    .balloon2 { background-color: #ffcc66; left: 30%; animation-delay: 1s; }
+    .balloon3 { background-color: #66ff66; left: 50%; animation-delay: 0.5s; }
+    .balloon4 { background-color: #66ccff; left: 70%; animation-delay: 1.5s; }
 
     @keyframes float {
-      0% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-200px);
-      }
-      100% {
-        transform: translateY(0);
-      }
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-200px); }
+      100% { transform: translateY(0); }
     }
 
     @keyframes sideToSide {
-      0% {
-        transform: translateX(0);
-      }
-      50% {
-        transform: translateX(20px);
-      }
-      100% {
-        transform: translateX(0);
-      }
+      0% { transform: translateX(0); }
+      50% { transform: translateX(20px); }
+      100% { transform: translateX(0); }
     }
 
     /* Interactivity */
-    .balloon:hover {
-      transform: scale(1.2);
-    }
+    .balloon:hover { transform: scale(1.2); }
 
     /* Confetti */
     .confetti {
@@ -190,15 +158,10 @@
     }
 
     @keyframes fall {
-      0% {
-        transform: translateY(-100vh) rotate(0deg);
-      }
-      100% {
-        transform: translateY(100vh) rotate(360deg);
-      }
-      
+      0% { transform: translateY(-100vh) rotate(0deg); }
+      100% { transform: translateY(100vh) rotate(360deg); }
     }
-   
+
     /* Stars */
     .star {
       position: absolute;
@@ -210,22 +173,17 @@
     }
 
     @keyframes twinkle {
-      0%, 100% {
-        opacity: 1;
-      }
-      50% {
-        opacity: 0.5;
-      }
-
-    
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Happy Milad, Hikmah Ramadhani!</h1>
     <h2>Untuk Hikmah Ramadhani, </h2>
-    <p>Hikmah Ramadhani,  yang selalu ceria dan penuh semangat, hari ini adalah hari spesialmu. Semoga hari ini menjadi hari yang penuh dengan kebahagiaan, tawa, dan keceriaan. Rasakan kehangatan dan cinta dari orang-orang terdekatmu, dan biarkan hari ini menjadi momen yang tak terlupakan dalam perjalanan hidupmu.</p>
-    <p>Hikmah, semoga di usiamu yang semakin dewasa ini, kamu semakin bijaksana, penuh kasih sayang, dan mampu meraih semua impianmu. Tetaplah menjadi pribadi yang rendah hati, berani bermimpi, dan selalu berusaha untuk menjadi yang terbaik. Ingat, setiap kesulitan yang kau hadapi akan menjadi batu loncatan untuk meraih kesuksesan yang lebih besar.</p>
+    <p>Hikmah Ramadhani,  yang selalu ceria dan penuh semangat, hari ini adalah hari spesialmu. Semoga hari ini menjadi hari yang penuh dengan kebahagiaan, tawa, dan keceriaan. Rasakan kehangatan dan cinta dari orang-orang terdekatmu, dan biarkan hari ini menjadi momen yang tak terlupakan dalam perjalanan hidupmu. </p>
+    <p>Hikmah, semoga di usiamu yang semakin dewasa ini, kamu semakin bijaksana, penuh kasih sayang, dan mampu meraih semua impianmu. Tetaplah menjadi pribadi yang rendah hati, berani bermimpi, dan selalu berusaha untuk menjadi yang terbaik. Ingat, setiap kesulitan yang kau hadapi akan menjadi batu loncatan untuk meraih kesuksesan yang lebih besar.
 
     <div class="cake-container">
       <div class="cake">
@@ -242,23 +200,26 @@
     </div>
 
     <div class="confetti"></div>
-    <!-- Add star elements here -->
 
-    <button id="playAudio" style="margin-top: 20px; padding: 10px; font-size: 16px; opacity: 30%;">Play Audio</button>
     <audio id="birthdayAudio" src="SelamatUlangTahun.mp3" loop></audio>
   </div>
 
   <script>
     window.onload = function() {
       const audio = document.getElementById('birthdayAudio');
-      const playButton = document.getElementById('playAudio');
+      let audioPlayed = false; // Track if audio has been played
 
-      playButton.addEventListener('click', function() {
-        audio.play();
+      document.querySelectorAll('.balloon').forEach((balloon) => {
+        balloon.addEventListener('click', function() {
+          if (!audioPlayed) { // Only play audio once
+            audio.play();
+            audioPlayed = true;
+          }
+          balloon.style.visibility = 'hidden'; // Hide the balloon to simulate popping
+        });
       });
-
-      // Other JavaScript interactions (balloon bursting etc.)
     };
   </script>
 </body>
 </html>
+
