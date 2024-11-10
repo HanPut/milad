@@ -17,9 +17,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      overflow: hidden;
+      min-height: 100vh;
       padding: 20px;
+      overflow-x: hidden;
     }
 
     .container {
@@ -29,11 +29,10 @@
       position: relative;
       width: 100%;
       max-width: 500px;
-      overflow: hidden;
       background-image: url('background.jpg');
       background-size: cover;
       background-position: center;
-      z-index: 1;
+      overflow: hidden;
     }
 
     h1, h2, p {
@@ -45,24 +44,23 @@
       color: #f5f0f3;
       text-shadow: 2px 2px 4px black;
       font-size: 2.5rem;
-      margin-bottom: 20px;
+      margin-top: 20px;
       animation: zoomIn 2s ease;
     }
 
     h2 {
-      margin-top: 10px;
       font-weight: bold;
       color: white;
       text-shadow: 2px 2px 4px black;
+      font-size: 1.5rem;
       animation: zoomIn 2s ease;
     }
 
     p {
-      margin-top: 20px;
-      font-size: 1.2rem;
+      font-size: 1rem;
       text-shadow: 2px 2px 4px black;
       color: #fcfafa;
-      margin-bottom: 20px;
+      margin-top: 10px;
       animation: fadeInUp 2s ease-in-out;
     }
 
@@ -108,8 +106,8 @@
     /* Balloons */
     .balloons {
       position: relative;
-      height: 200px;
-      margin-top: 20px;
+      height: 150px;
+      margin-top: 10px;
       z-index: 2;
     }
 
@@ -130,7 +128,7 @@
 
     @keyframes float {
       0% { transform: translateY(0); }
-      50% { transform: translateY(-200px); }
+      50% { transform: translateY(-150px); }
       100% { transform: translateY(0); }
     }
 
@@ -142,49 +140,19 @@
 
     .balloon:hover { transform: scale(1.2); }
 
-    /* Confetti */
-    .confetti {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background-color: #ff66b2;
-      animation: fall 10s linear infinite;
-    }
-
-    @keyframes fall {
-      0% { transform: translateY(-100vh) rotate(0deg); }
-      100% { transform: translateY(100vh) rotate(360deg); }
-    }
-
-    /* Stars */
-    .star {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background: yellow;
-      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-      animation: twinkle 1.5s infinite;
-    }
-
-    @keyframes twinkle {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
-    }
-
     /* Responsive Styling */
     @media (max-width: 600px) {
       h1 {
-        font-size: 2rem;
-        margin-top: 100px;
+        font-size: 1.8rem;
+        margin-top: 10px;
       }
 
       h2 {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
       }
 
       p {
-        font-size: 1rem;
-        margin: 10px 0;
+        font-size: 0.9rem;
       }
 
       .cake {
@@ -206,9 +174,14 @@
         left: 27px;
       }
 
+      .balloons {
+        height: 120px;
+        margin-top: 10px;
+      }
+
       .balloon {
         width: 30px;
-        height: 50px;
+        height: 45px;
       }
     }
   </style>
@@ -217,7 +190,7 @@
   <div class="container">
     <h1>Happy Milad, Hikmah Ramadhani!</h1>
     <h2>Untuk Hikmah Ramadhani, </h2>
-    <p>Hikmah Ramadhani, yang selalu ceria dan penuh semangat, hari ini adalah hari spesialmu. Semoga hari ini menjadi hari yang penuh dengan kebahagiaan, tawa, dan keceriaan. Rasakan kehangatan dan cinta dari orang-orang terdekatmu, dan biarkan hari ini menjadi momen yang tak terlupakan dalam perjalanan hidupmu. </p>
+    <p>Hikmah Ramadhani, yang selalu ceria dan penuh semangat, hari ini adalah hari spesialmu. Semoga hari ini menjadi hari yang penuh dengan kebahagiaan, tawa, dan keceriaan. Rasakan kehangatan dan cinta dari orang-orang terdekatmu, dan biarkan hari ini menjadi momen yang tak terlupakan dalam perjalanan hidupmu.</p>
     <p>Hikmah, semoga di usiamu yang semakin dewasa ini, kamu semakin bijaksana, penuh kasih sayang, dan mampu meraih semua impianmu. Tetaplah menjadi pribadi yang rendah hati, berani bermimpi, dan selalu berusaha untuk menjadi yang terbaik. Ingat, setiap kesulitan yang kau hadapi akan menjadi batu loncatan untuk meraih kesuksesan yang lebih besar.</p>
 
     <div class="cake-container">
@@ -248,32 +221,12 @@
       }
     }
 
-    function createStars() {
-      for (let i = 0; i < 50; i++) {
-        const star = document.createElement('div');
-        star.classList.add('star');
-        star.style.left = Math.random() * 100 + 'vw';
-        star.style.top = Math.random() * 100 + 'vh';
-        star.style.animationDuration = Math.random() * 2 + 1 + 's';
-        document.body.appendChild(star);
-      }
-    }
-
     function popBalloon(balloon) {
       balloon.style.visibility = 'hidden';
-      for (let i = 0; i < 20; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('confetti');
-        particle.style.left = balloon.getBoundingClientRect().left + Math.random() * 30 + 'px';
-        particle.style.top = balloon.getBoundingClientRect().top + Math.random() * 30 + 'px';
-        particle.style.animationDuration = Math.random() * 1 + 1 + 's';
-        document.body.appendChild(particle);
-      }
     }
 
     window.onload = function() {
       createConfetti();
-      createStars();
       const audio = document.getElementById('birthdayAudio');
       let audioPlayed = false;
 
